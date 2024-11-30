@@ -1,19 +1,5 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "jsx": "preserve",
     "allowJs": true,
     "esModuleInterop": true,
@@ -31,14 +17,6 @@
     ],
     "types": ["jest", "node"]
   },
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "jest.config.ts",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts",
-    "dist/goku/**/*"
-  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
@@ -47,5 +25,6 @@
     ".next/types/**/*.ts",
     "dist/goku/.next/types/**/*.ts",
     "next-env.d.ts"
-  ]
+  ],
+  "extends": "./tsconfig.base.json"
 }

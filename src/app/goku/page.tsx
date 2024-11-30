@@ -49,12 +49,12 @@ export default function Home(): JSX.Element {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {characters.map((character) => (
           <div key={character.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="relative h-48">
+            <div className="relative h-56 overflow-hidden">
               <Image
                 src={character.image}
                 alt={character.name}
-                layout="fill"
-                objectFit="cover"
+                width={250}
+                height={100}
               />
             </div>
             <div className="p-4">

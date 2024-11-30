@@ -13,7 +13,13 @@ const nextConfig = {
     svgr: false,
   },
   images: {
-    domains: ['dragonball-api.com'],  // Agregar el dominio de la imagen externa
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'dragonball-api.com' 
+      }
+      
+    ],  // Agregar el dominio de la imagen externa
   },
 };
 

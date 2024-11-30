@@ -1,3 +1,5 @@
+//import styles from './navbar.module.css';
+
 'use client'
 
 import Link from 'next/link'
@@ -18,7 +20,7 @@ export function Navbar({ menuItems }: NavbarProps): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="border-red-500 border-b-2 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/" className="flex items-center">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Dragon Ball App</span>
@@ -59,3 +61,4 @@ export function Navbar({ menuItems }: NavbarProps): JSX.Element {
   )
 }
 
+export default Navbar;
