@@ -27,7 +27,7 @@ export default function Home(): JSX.Element {
   useEffect(() => {
     if (!isClient) return; // Evitar ejecutar el fetch en el servidor
 
-    fetch('https://dragonball-api.com/api/characters')
+    fetch('https://dragonball-api.com/api/characters?limit=58')
       .then(response => response.json())
       .then(data => {
         setCharacters(data.items);
@@ -42,7 +42,7 @@ export default function Home(): JSX.Element {
   if (loading) return <div className="flex justify-center items-center h-screen">Cargando...</div>;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
         Personajes de Dragon Ball
       </h1>
