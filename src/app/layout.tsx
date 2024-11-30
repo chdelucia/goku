@@ -1,6 +1,7 @@
 import './global.css';
 import { Inter } from 'next/font/google'
 import { Navbar } from '@goku/ui'
+import { FiltersProvider } from './goku/contexts/FiltersContext';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,9 +31,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar menuItems={menuItems} />
-        <main className="mx-auto max-w-[1400px] pt-16 px-6">
-          {children}
-        </main>
+        <FiltersProvider>
+          <main className="mx-auto max-w-[1400px] pt-16 px-6">
+            {children}
+          </main>
+        </FiltersProvider>
       </body>
         
     </html>
