@@ -1,66 +1,47 @@
-import { useFilters } from '../../contexts/FiltersContext'; // Ruta correcta del contexto
+// src/components/filters/Filters.tsx
+import React, { useCallback, useMemo } from 'react';
 import { Button, InputText, RadioButton, Select } from '@goku/ui';
+import { useFilters } from '../../contexts/FiltersContext';
 import { FilterState } from '../../types';
-
+import { affiliationOptions, genderOptions, raceOptions } from './constants';
 
 export function Filters(): JSX.Element {
   const { filters, dispatch } = useFilters();
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    dispatch({ type: 'SET_FILTER', payload: { name: name as keyof FilterState, value } });
-  };
+  // Manejo de cambio de entrada de texto
+  const handleInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      dispatch({ type: 'SET_FILTER', payload: { name: name as keyof FilterState, value } });
+    },
+    [dispatch]
+  );
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { name, value } = event.target;
-    dispatch({ type: 'SET_FILTER', payload: { name: name as keyof FilterState, value } });
-  };
+  // Manejo de cambio de selección
+  const handleSelectChange = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const { name, value } = event.target;
+      dispatch({ type: 'SET_FILTER', payload: { name: name as keyof FilterState, value } });
+    },
+    [dispatch]
+  );
 
-  const handleResetFilters = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    dispatch({ type: 'RESET_FILTERS' });
-  };
+  // Resetear filtros
+  const handleResetFilters = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      dispatch({ type: 'RESET_FILTERS' });
+    },
+    [dispatch]
+  );
 
-  const genderOptions = [
-    { value: 'Male', label: 'Male' },
-    { value: 'Female', label: 'Female' },
-    { value: 'Unknown', label: 'Unknown' },
-  ];
-
-  const raceOptions = [
-    { value: '', label: 'Todas las razas' },
-    { value: 'Human', label: 'Human' },
-    { value: 'Saiyan', label: 'Saiyan' },
-    { value: 'Namekian', label: 'Namekian' },
-    { value: 'Majin', label: 'Majin' },
-    { value: 'Frieza Race', label: 'Frieza Race' },
-    { value: 'Android', label: 'Android' },
-    { value: 'Jiren Race', label: 'Jiren Race' },
-    { value: 'God', label: 'God' },
-    { value: 'Angel', label: 'Angel' },
-    { value: 'Evil', label: 'Evil' },
-    { value: 'Nucleico', label: 'Nucleico' },
-    { value: 'Nucleico benigno', label: 'Nucleico benigno' },
-    { value: 'Unknown', label: 'Unknown' },
-  ];
-
-  const affiliationOptions = [
-    { value: '', label: 'Todas las afiliaciones' },
-    { value: 'Z Fighter', label: 'Z Fighter' },
-    { value: 'Red Ribbon Army', label: 'Red Ribbon Army' },
-    { value: 'Namekian Warrior', label: 'Namekian Warrior' },
-    { value: 'Freelancer', label: 'Freelancer' },
-    { value: 'Army of Frieza', label: 'Army of Frieza' },
-    { value: 'Pride Troopers', label: 'Pride Troopers' },
-    { value: 'Assistant of Vermoud', label: 'Assistant of Vermoud' },
-    { value: 'God', label: 'God' },
-    { value: 'Assistant of Beerus', label: 'Assistant of Beerus' },
-    { value: 'Villain', label: 'Villain' },
-    { value: 'Other', label: 'Other' },
-  ];
+  // Solo memoizamos las opciones si cambian
+  const memoizedGenderOptions = useMemo(() => genderOptions, []);
+  const memoizedRaceOptions = useMemo(() => raceOptions, []);
+  const memoizedAffiliationOptions = useMemo(() => affiliationOptions, []);
 
   return (
-    <div className="mb-8 p-4 bg-gray-100 rounded-lg">
+    <form onSubmit={(e) => e.preventDefault()} className="mb-8 p-4 bg-gray-100 rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Filtros</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <InputText
@@ -74,7 +55,7 @@ export function Filters(): JSX.Element {
         <RadioButton
           name="gender"
           label="Género"
-          options={genderOptions}
+          options={memoizedGenderOptions}
           value={filters.gender}
           onChange={handleInputChange}
         />
@@ -82,7 +63,7 @@ export function Filters(): JSX.Element {
           id="race"
           name="race"
           label="Raza"
-          options={raceOptions}
+          options={memoizedRaceOptions}
           value={filters.race}
           onChange={handleSelectChange}
         />
@@ -90,7 +71,7 @@ export function Filters(): JSX.Element {
           id="affiliation"
           name="affiliation"
           label="Afiliación"
-          options={affiliationOptions}
+          options={memoizedAffiliationOptions}
           value={filters.affiliation}
           onChange={handleSelectChange}
         />
@@ -100,7 +81,7 @@ export function Filters(): JSX.Element {
           Borrar Filtros
         </Button>
       </div>
-    </div>
+    </form>
   );
 }
 

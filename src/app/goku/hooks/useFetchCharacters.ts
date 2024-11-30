@@ -47,7 +47,7 @@ export function UseFetchCharacters(filters: FilterState): UseFetchCharacters {
     };
 
     fetchCharacters();
-  }, [filters]); // Solo se ejecuta cuando `filters` cambia
+  }, [filters]);
 
   return { characters, loading, error };
 }

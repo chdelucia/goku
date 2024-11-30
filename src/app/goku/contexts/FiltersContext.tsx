@@ -1,12 +1,11 @@
 'use client'
 
-import React, { createContext, useReducer, useContext, ReactNode } from 'react';
+import React, { createContext, useReducer, useContext, ReactNode, useMemo } from 'react';
 import { FilterState } from '../types';
 
 type FiltersAction =
   | { type: 'SET_FILTER'; payload: { name: keyof FilterState; value: string } }
   | { type: 'RESET_FILTERS' };
-
 
 const initialState: FilterState = {
   name: '',
@@ -17,8 +16,13 @@ const initialState: FilterState = {
 
 function filtersReducer(state: FilterState, action: FiltersAction): FilterState {
   switch (action.type) {
-    case 'SET_FILTER':
-      return { ...state, [action.payload.name]: action.payload.value };
+    case 'SET_FILTER': {
+      const { name, value } = action.payload;
+      if (state[name] === value) {
+        return state; // No actualizar si el valor no cambia
+      }
+      return { ...state, [name]: value };
+    }
     case 'RESET_FILTERS':
       return initialState;
     default:
@@ -36,8 +40,11 @@ const FiltersContext = createContext<FiltersContextType | undefined>(undefined);
 export const FiltersProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [filters, dispatch] = useReducer(filtersReducer, initialState);
 
+  // Memorizar el contexto para evitar renders innecesarios
+  const value = useMemo(() => ({ filters, dispatch }), [filters]);
+
   return (
-    <FiltersContext.Provider value={{ filters, dispatch }}>
+    <FiltersContext.Provider value={value}>
       {children}
     </FiltersContext.Provider>
   );
