@@ -4,18 +4,21 @@ import fetchWithQueryParams from '../interceptors/httpService';
 
 export interface UseFetchCharacters {
   characters: Character[];
-  loading: boolean;
+  loading: boolean; 
+  softLoading: boolean;
   error: string | null;
 }
 
 export function UseFetchCharacters(filters: FilterState): UseFetchCharacters {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [softLoading, setSoftLoading] = useState<boolean>(true); 
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCharacters = async () => {
       setLoading(true);
+      setSoftLoading(true); 
       setError(null);
 
       const queryParams = new URLSearchParams();
@@ -28,10 +31,11 @@ export function UseFetchCharacters(filters: FilterState): UseFetchCharacters {
 
       try {
         const response = await fetchWithQueryParams(url);
-       
+
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+
         const data = await response.json();
         if (Array.isArray(data.items)) {
           setCharacters(data.items);
@@ -44,14 +48,15 @@ export function UseFetchCharacters(filters: FilterState): UseFetchCharacters {
         console.error('Error fetching data:', error);
         setError('Failed to fetch characters. Please try again later.');
       } finally {
-        setLoading(false);
+        setLoading(false); // Indica que la solicitud terminó
+        setTimeout(() => setSoftLoading(false), 300); // Retrasa la desactivación de la UI
       }
     };
 
     fetchCharacters();
   }, [filters]);
 
-  return { characters, loading, error };
+  return { characters, loading, softLoading, error };
 }
 
 export default UseFetchCharacters;
