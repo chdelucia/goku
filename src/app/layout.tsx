@@ -2,6 +2,7 @@ import './global.css';
 import { Inter } from 'next/font/google'
 import { Navbar } from '@goku/ui'
 import { FiltersProvider } from './goku/contexts/FiltersContext';
+import ScrollRestoration from './scroll-restoration';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         <FiltersProvider>
           <main className="mx-auto max-w-[1400px] pt-16 px-6">
             {children}
+            <ScrollRestoration />
           </main>
         </FiltersProvider>
       </body>
