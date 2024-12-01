@@ -7,7 +7,7 @@ const fetchWithQueryParams = async (url, options = {}) => {
       ...options.params, 
     });
   
-    const finalUrl = `${url}${queryParams.toString()}`;
+    const finalUrl = `${url}&${queryParams.toString()}`;
   
 
     const response = await fetch(finalUrl, {
