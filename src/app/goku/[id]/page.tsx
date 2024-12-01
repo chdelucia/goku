@@ -3,14 +3,13 @@
 
 'use client';
 
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import UseFetchCharacterDetails from '../hooks/useFetchCharacterDetails';
+import Link from 'next/link';
 
 
 export default function CharacterDetails({ params }: { params: { id: string } }) {
   const { id } = params;
-  const router = useRouter();
   const { character, loading, error } = UseFetchCharacterDetails(id);
 
   if (loading) {
@@ -27,12 +26,12 @@ export default function CharacterDetails({ params }: { params: { id: string } })
 
   return (
     <div className="mx-auto px-4 py-8">
-      <button
-        onClick={() => router.back()}
-        className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded mb-4"
+      <Link
+          href="/goku"
+          className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded mb-4 inline-block"
       >
         Volver
-      </button>
+      </Link>
       <h1 className="text-4xl font-bold mb-8 text-center">{character.name}</h1>
       <div className="flex flex-col md:flex-row gap-8">
         {/* Character Info */}
