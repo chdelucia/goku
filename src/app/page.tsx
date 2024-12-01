@@ -4,7 +4,6 @@ export default function Index() {
       <div className="wrapper">
       its me
       queryparams
-      iterceptor para añadir
       interceptor para error
       adapter backend - paginaciones y totales
       

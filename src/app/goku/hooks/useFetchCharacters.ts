@@ -38,7 +38,6 @@ export function UseFetchCharacters(filters: FilterState): UseFetchCharacters {
         } else if (Array.isArray(data)) {
           setCharacters(data);
         } else {
-          console.log('entra aqui')
           throw new Error('Unexpected data structure');
         }
       } catch (error) {
