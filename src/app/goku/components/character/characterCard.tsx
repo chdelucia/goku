@@ -1,19 +1,26 @@
-import { useMemo } from 'react';
 import { Character } from '../../types';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface CharacterCardProps {
   character: Character;
 }
 
 export function CharacterCard({ character }: CharacterCardProps) {
+  const router = useRouter();
  
   const truncatedDescription = character.description.length > 100
   ? `${character.description.substring(0, 100)}...`
   : character.description;
 
+  const handleCardClick = () => {
+    router.push(`/goku/${character.id}`);
+  };
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div 
+      className="bg-white rounded-lg shadow-md overflow-hidden"
+      onClick={handleCardClick}
+    >
       <div className="relative h-56 overflow-hidden">
         <Image
           src={character.image}

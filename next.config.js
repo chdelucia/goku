@@ -18,8 +18,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'dragonball-api.com' 
       }
-      
-    ],  // Agregar el dominio de la imagen externa
+    ], 
   },
 };
 
