@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@data/data": ["src/data/index.ts"],
       "@goku/ui": ["libs/ui/src/index.ts"],
-      "@store/store": ["src/store/index.ts"],
-      "@data/data": ["src/data/index.ts"]
+      "@store/store": ["src/store/index.ts"]
     }
   },
   "exclude": [
