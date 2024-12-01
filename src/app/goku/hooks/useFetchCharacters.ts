@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Character, FilterState } from '../types';
+import fetchWithQueryParams from '../interceptors/httpService';
 
 export interface UseFetchCharacters {
   characters: Character[];
@@ -26,7 +27,8 @@ export function UseFetchCharacters(filters: FilterState): UseFetchCharacters {
       const url = `https://dragonball-api.com/api/characters?${queryParams.toString()}`;
 
       try {
-        const response = await fetch(url);
+        const response = await fetchWithQueryParams(url);
+       
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -36,6 +38,7 @@ export function UseFetchCharacters(filters: FilterState): UseFetchCharacters {
         } else if (Array.isArray(data)) {
           setCharacters(data);
         } else {
+          console.log('entra aqui')
           throw new Error('Unexpected data structure');
         }
       } catch (error) {
