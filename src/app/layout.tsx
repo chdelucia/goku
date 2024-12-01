@@ -16,7 +16,7 @@ interface MenuItem {
   href: string;
 }
 const menuItems: MenuItem[] = [
-  { name: "Inicio", href: "/" },
+  { name: "Todolist", href: "/" },
   { name: "DBZ", href: "/goku" },
   { name: "Comunidades", href: "/comunidades" },
   { name: "Cuadrantes", href: "/cuadrantes" },

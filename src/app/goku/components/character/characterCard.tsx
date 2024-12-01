@@ -19,9 +19,7 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
         <div className="relative h-56 overflow-hidden">
           <Image
             className={`shared-image-${character.id}`}
-            placeholder="blur"
             src={character.image}
-            blurDataURL={character.image}
             alt={character.name}
             width={250}
             height={100}

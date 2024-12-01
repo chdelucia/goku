@@ -1,5 +1,4 @@
-// src/components/filters/Filters.tsx
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { Button, InputText, RadioButton, Select } from '@goku/ui';
 import { useFilters } from '../../contexts/FiltersContext';
 import { FilterState } from '../../types';
@@ -8,26 +7,51 @@ import { affiliationOptions, genderOptions, raceOptions } from './constants';
 export function Filters(): JSX.Element {
   const { filters, dispatch } = useFilters();
 
+  const updateUrlWithFilters = (filters: FilterState) => {
+    const query = new URLSearchParams();
+
+    Object.keys(filters).forEach((key) => {
+      const filterKey = key as keyof FilterState;
+      if (filters[filterKey]) {
+        query.set(filterKey, filters[filterKey]);
+      }
+    });
+
+    const newUrl = `/goku?${query.toString()}`;
+    window.history.replaceState({}, '', newUrl);
+  };
+
+  useEffect(() => {
+    updateUrlWithFilters(filters)
+  });
+
+
   const handleInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
       dispatch({ type: 'SET_FILTER', payload: { name: name as keyof FilterState, value } });
+
+      updateUrlWithFilters({ ...filters, [name]: value });
     },
-    [dispatch]
+    [dispatch, filters]
   );
 
   const handleSelectChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       const { name, value } = event.target;
       dispatch({ type: 'SET_FILTER', payload: { name: name as keyof FilterState, value } });
+
+      updateUrlWithFilters({ ...filters, [name]: value });
     },
-    [dispatch]
+    [dispatch, filters]
   );
 
   const handleResetFilters = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
       dispatch({ type: 'RESET_FILTERS' });
+
+      updateUrlWithFilters({ name: '', gender: '', race: '', affiliation: '' });
     },
     [dispatch]
   );
