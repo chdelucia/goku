@@ -35,9 +35,9 @@ export default function Home(): JSX.Element {
         <h1 className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
           Personajes de Dragon Ball
         </h1>
-      </Suspense>
 
-      <Filters />
+        <Filters />
+      </Suspense>
 
       {renderLoading}
       {renderError}

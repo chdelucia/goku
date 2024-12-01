@@ -8,7 +8,6 @@ import { affiliationOptions, genderOptions, raceOptions } from './constants';
 export function Filters(): JSX.Element {
   const { filters, dispatch } = useFilters();
 
-  // Manejo de cambio de entrada de texto
   const handleInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
@@ -17,7 +16,6 @@ export function Filters(): JSX.Element {
     [dispatch]
   );
 
-  // Manejo de cambio de selección
   const handleSelectChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       const { name, value } = event.target;
@@ -26,7 +24,6 @@ export function Filters(): JSX.Element {
     [dispatch]
   );
 
-  // Resetear filtros
   const handleResetFilters = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
@@ -35,7 +32,6 @@ export function Filters(): JSX.Element {
     [dispatch]
   );
 
-  // Solo memoizamos las opciones si cambian
   const memoizedGenderOptions = useMemo(() => genderOptions, []);
   const memoizedRaceOptions = useMemo(() => raceOptions, []);
   const memoizedAffiliationOptions = useMemo(() => affiliationOptions, []);
