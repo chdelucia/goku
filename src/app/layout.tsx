@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Navbar } from '@goku/ui'
 import { FiltersProvider } from './goku/contexts/FiltersContext';
 import ScrollRestoration from './scroll-restoration';
+import { InitializeData } from '../store/InitializeData';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,7 @@ const menuItems: MenuItem[] = [
   { name: "DBZ", href: "/goku" },
   { name: "Comunities", href: "/communities" },
   { name: "Employees", href: "/employees" },
-  { name: "Vacaciones", href: "/comunidades" },
+  { name: "Schedule", href: "/employee-schedule" },
 ]
 
 export default function RootLayout({
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar menuItems={menuItems} />
+        <InitializeData />
         <FiltersProvider>
           <main className="mx-auto max-w-[1400px] pt-16 px-6">
             {children}
