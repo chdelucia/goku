@@ -18,9 +18,9 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   { name: "Todolist", href: "/" },
   { name: "DBZ", href: "/goku" },
-  { name: "Comunidades", href: "/comunidades" },
-  { name: "Cuadrantes", href: "/cuadrantes" },
-  { name: "Vacaciones", href: "/vacaciones" },
+  { name: "Comunities", href: "/communities" },
+  { name: "Employees", href: "/employees" },
+  { name: "Vacaciones", href: "/comunidades" },
 ]
 
 export default function RootLayout({
