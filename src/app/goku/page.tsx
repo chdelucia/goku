@@ -23,8 +23,8 @@ export default function Home(): JSX.Element {
     <p className="text-center text-xl mt-8">No se encontraron personajes con los filtros aplicados.</p>
   ) : (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {characters.map((character) => (
-        <CharacterCard key={character.id} character={character} />
+      {characters.map((character, index) => (
+        <CharacterCard key={character.id} character={character} index={index} />
       ))}
     </div>
   );

@@ -4,9 +4,10 @@ import Link from 'next/link';
 
 interface CharacterCardProps {
   character: Character;
+  index: number;
 }
 
-export function CharacterCard({ character }: CharacterCardProps) {
+export function CharacterCard({ character, index }: CharacterCardProps) {
  
   const truncatedDescription = character.description.length > 100
   ? `${character.description.substring(0, 100)}...`
@@ -17,14 +18,18 @@ export function CharacterCard({ character }: CharacterCardProps) {
       <Link href={`/goku/${character.id}`}>
         <div className="relative h-56 overflow-hidden">
           <Image
+            className={`shared-image-${character.id}`}
+            placeholder="blur"
             src={character.image}
+            blurDataURL={character.image}
             alt={character.name}
             width={250}
             height={100}
+            priority={index < 4}
           />
         </div>
         <div className="p-4">
-          <h2 className="text-xl font-semibold mb-2">{character.name}</h2>
+          <h2 className={`text-xl font-semibold mb-2 shared-title-${character.id}`}>{character.name}</h2>
           <p className="text-sm text-gray-600 mb-2">{character.race}</p>
           <p className="text-sm text-gray-500 mb-2">{character.affiliation}</p>
           <p className="text-sm mb-4">{truncatedDescription}</p>

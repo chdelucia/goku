@@ -29,7 +29,7 @@ export default function CharacterDetails({ params }: { params: { id: string } })
       <Link
           href="/goku"
           className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded mb-4 inline-block"
-      >
+        >
         Volver
       </Link>
       <h1 className="text-4xl font-bold mb-8 text-center">{character.name}</h1>
