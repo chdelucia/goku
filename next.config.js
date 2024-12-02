@@ -11,7 +11,7 @@ const nextConfig = {
     svgr: false,
   },
   //output: 'export',
-  assetPrefix: 'https://chdelucia.github.io',
+  assetPrefix: '/goku',
   basePath: '/goku',
   images: {
     remotePatterns: [
