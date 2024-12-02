@@ -12,7 +12,8 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  assetPrefix: './',
+  output: 'export',
+  assetPrefix: 'https://chdelucia.github.io',
   basePath: '/goku',
   images: {
     remotePatterns: [
@@ -23,7 +24,7 @@ const nextConfig = {
     ], 
   },
 };
-
+module.exports = nextConfig;
 const plugins = [
   // Add more Next.js plugins to this list if needed.
   withNx,
