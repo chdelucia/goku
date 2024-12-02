@@ -20,7 +20,6 @@ const nextConfig = {
       }
     ], 
   },
-  output: 'export'
 };
 
 const plugins = [
