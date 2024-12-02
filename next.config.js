@@ -11,7 +11,7 @@ const nextConfig = {
     svgr: false,
   },
   //output: 'export',
-  assetPrefix: '/goku',
+  assetPrefix: '/',
   basePath: '/goku',
   images: {
     remotePatterns: [
