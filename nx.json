@@ -16,7 +16,11 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci.yml",
+      "{workspaceRoot}/.github/workflows/ci.yml",
+      "{workspaceRoot}/.github/workflows/ci.yml"
+    ]
   },
   "nxCloudId": "674a3abe1f541e512bd1fc4a",
   "plugins": [
@@ -65,6 +69,14 @@
   "targetDefaults": {
     "e2e-ci--**/*": {
       "dependsOn": ["^build"]
+    },
+    "build": {
+      "outputs": ["{projectRoot}/dist"],
+      "cache": true,
+      "dependsOn": ["typecheck"]
+    },
+    "lint": {
+      "cache": true
     }
   },
   "generators": {
