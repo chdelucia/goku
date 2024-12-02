@@ -10,9 +10,6 @@ const nextConfig = {
   nx: {
     svgr: false,
   },
-  //output: 'export',
-  assetPrefix: '/',
-  basePath: '/goku',
   images: {
     remotePatterns: [
       {
@@ -22,7 +19,7 @@ const nextConfig = {
     ], 
   },
 };
-//module.exports = nextConfig;
+
 const plugins = [
   withNx,
 ];
