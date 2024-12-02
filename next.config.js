@@ -12,7 +12,8 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  
+  assetPrefix: './',
+  basePath: '/goku',
   images: {
     remotePatterns: [
       {
