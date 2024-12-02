@@ -7,9 +7,6 @@ export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/libs/ui',
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
-  build: {
-    outDir: 'dist/goku',
-  },
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
