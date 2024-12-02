@@ -1,4 +1,3 @@
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { create } from 'zustand'
 import { Empleado } from '../models/empleado'
 import { Comunidad } from '../models/comunidad'

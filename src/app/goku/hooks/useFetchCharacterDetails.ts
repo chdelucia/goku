@@ -24,7 +24,7 @@ export function UseFetchCharacterDetails(id: string): UseFetchCharacterDetails {
         const data: DetailedCharacter = await response.json();
         setCharacter(data);
       } catch (err) {
-        setError('Error fetching character details. Please try again later.');
+        setError('Error fetching character details. Please try again later.'+err);
       } finally {
         setLoading(false);
       }
