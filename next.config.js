@@ -19,12 +19,7 @@ const nextConfig = {
     path: '', 
     domains: ['dragonball-api.com'],
     disableStaticImages: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'dragonball-api.com' 
-      }
-    ], 
+
   },
 };
 

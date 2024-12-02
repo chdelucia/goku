@@ -28,7 +28,8 @@
     ".next/types/**/*.ts",
     "dist/goku/.next/types/**/*.ts",
     "next-env.d.ts",
-    "dist/.next/types/**/*.ts"
+    "dist/.next/types/**/*.ts",
+    "out/types/**/*.ts"
   ],
   "extends": "./tsconfig.base.json"
 }
