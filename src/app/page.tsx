@@ -2,6 +2,7 @@ export default function Index() {
   return (
     <div>
       <div className="wrapper">
+       <h4> Add generate static functions to export build</h4>
       Add history, recover url filters on back btn<br></br>
       debouncefilters<br></br>
       page transition - img transition<br></br>
