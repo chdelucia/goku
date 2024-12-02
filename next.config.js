@@ -15,6 +15,10 @@ const nextConfig = {
   basePath: '/goku',
   assetPrefix: '/goku',
   images: {
+    loader: 'imgix', 
+    path: '', 
+    domains: ['dragonball-api.com'],
+    disableStaticImages: true,
     remotePatterns: [
       {
         protocol: 'https',
