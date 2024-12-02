@@ -2,8 +2,8 @@
     "version": 2,
     "builds": [
         {
-          "src": "dist/goku/next.config.js",
-          "use": "@vercel/next"
+          "src": "dist/goku/out/**/*",
+          "use": "@vercel/static"
         }
       ],
     "routes": [
