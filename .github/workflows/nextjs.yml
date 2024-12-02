@@ -60,6 +60,8 @@ jobs:
           # Automatically inject basePath in your Next.js configuration file and disable
           # server-side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
           static_site_generator: next
+          token: ${{ secrets.GITHUB_TOKEN }}
+          enablement: false
 
       - name: Restore cache
         uses: actions/cache@v4
