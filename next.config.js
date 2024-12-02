@@ -12,8 +12,8 @@ const nextConfig = {
   },
   output: 'export',
   distDir: 'out',
-  basePath: process.env.GITHUB_PAGES ? '/goku' : '',
-  assetPrefix: process.env.GITHUB_PAGES ? '/goku' : '',
+  basePath: '/goku',
+  assetPrefix: '/goku',
   images: {
     remotePatterns: [
       {
