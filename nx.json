@@ -70,8 +70,7 @@
     },
     "build": {
       "outputs": ["{projectRoot}/dist"],
-      "cache": true,
-      "dependsOn": ["typecheck"]
+      "cache": true
     },
     "lint": {
       "cache": true
