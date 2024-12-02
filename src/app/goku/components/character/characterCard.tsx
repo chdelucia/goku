@@ -15,7 +15,7 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <Link href={`/goku/${character.id}`}>
+    
         <div className="relative h-56 overflow-hidden">
           <Image
             className={`shared-image-${character.id}`}
@@ -36,7 +36,7 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
             <span>Max Ki: {character.maxKi}</span>
           </div>
         </div>
-      </Link>
+
     </div>
   );
 }
